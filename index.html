@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinTrust Demo Store — DPDP Consent Testing Site</title>
+
+  <head>
+  <script src="https://cdn.truecookieconsent.com/js/latest/banner.js"
+    data-key="tp_ck_MmMfK7cdu2X3TxnL" async></script>
+  <!-- analytics and marketing scripts go after this -->
+</head>
+
+  <script>
+    document.cookie = "session_cart_id=CART_98765; path=/; SameSite=Lax";
+  </script>
+
+  <!-- 2. Simulated Analytics Script (Should be blocked until Analytics consent is given) -->
+  <script type="text/plain" data-category="analytics" id="demo-analytics">
+    document.cookie = "_ga_demo_analytics=GA1.2.99887766; path=/; SameSite=Lax";
+    console.log("Analytics Tracker Fired!");
+  </script>
+
+  <!-- 3. Simulated Marketing Pixel (Should be blocked until Marketing consent is given) -->
+  <script type="text/plain" data-category="marketing" id="demo-marketing">
+    document.cookie = "_fbp_demo_ad_pixel=FB.1.11223344; path=/; SameSite=Lax";
+    console.log("Marketing Ad Pixel Fired!");
+  </script>
+
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #1f2937; }
+    header { border-bottom: 2px solid #e5e7eb; padding-bottom: 16px; margin-bottom: 24px; }
+    .card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+    input, button { padding: 10px; margin-top: 8px; width: 100%; box-sizing: border-box; border-radius: 6px; border: 1px solid #d1d5db; }
+    button { background: #2563eb; color: white; font-weight: bold; border: none; cursor: pointer; margin-top: 14px; }
+    button:hover { background: #1d4ed8; }
+    footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280; }
+    code { background: #e5e7eb; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FinTrust Demo Portal</h1>
+    <p>Sandbox website for testing <strong>Data Fiduciary</strong> notices, cookies, and <strong>TruePrivacy</strong> consent logs.</p>
+  </header>
+
+  <div class="card">
+    <h2>Active Trackers Embedded on This Page</h2>
+    <ul>
+      <li><strong>Strictly Necessary:</strong> <code>session_cart_id</code> (Stores shopping session)</li>
+      <li><strong>Analytics:</strong> <code>_ga_demo_analytics</code> (Measures page visits)</li>
+      <li><strong>Marketing:</strong> <code>_fbp_demo_ad_pixel</code> (Tracks user for targeted ads)</li>
+    </ul>
+    <p><em>Tip: Press <strong>F12 &rarr; Application &rarr; Cookies</strong> in Chrome/Edge to watch these cookies appear or stay blocked as you interact with your consent banner.</em></p>
+  </div>
+
+  <div class="card">
+    <h2>Data Principal Onboarding Form</h2>
+    <p>Test how consent is captured alongside personal data submission:</p>
+    <form onsubmit="event.preventDefault(); alert('Form submitted! Check your TruePrivacy Consent Ledger for the audit record.');">
+      <label>Full Name</label>
+      <input type="text" placeholder="Aarav Sharma" required />
+
+      <label style="display:block; margin-top:12px;">Email Address</label>
+      <input type="email" placeholder="aarav@example.com" required />
+
+      <label style="display:flex; align-items:center; gap:8px; margin-top:14px; font-size:14px;">
+        <input type="checkbox" style="width:auto; margin:0;" required />
+        I agree to share my name and email strictly for account registration (DPDP Purpose #1).
+      </label>
+
+      <label style="display:flex; align-items:center; gap:8px; margin-top:8px; font-size:14px;">
+        <input type="checkbox" style="width:auto; margin:0;" />
+        Optional: Send me promotional loan & credit offers (DPDP Purpose #2).
+      </label>
+
+      <button type="submit">Submit Data & Record Consent</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>Data Fiduciary: FinTrust Demo Pvt. Ltd. | <a href="#cookie-settings">Manage Cookie Preferences</a> | <a href="#dsr-portal">Withdraw Consent / Delete My Data</a></p>
+  </footer>
+
+</body>
+</html>
